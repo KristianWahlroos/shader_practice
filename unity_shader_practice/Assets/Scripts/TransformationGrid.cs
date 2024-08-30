@@ -13,6 +13,8 @@ public class TransformationGrid : MonoBehaviour
 
     List<Transformation> transformations;
 
+    Matrix4x4 transformation;
+
     void Awake()
     {
         grid = new Transform[gridResolution * gridResolution * gridResolution];
@@ -62,14 +64,29 @@ public class TransformationGrid : MonoBehaviour
 
     void Update()
     {
-        GetComponents<Transformation>(transformations);
+        UpdateTransformation();
         for (int i = 0, z = 0; z < gridResolution; z++)
         {
-            for (int y = 0; y < gridResolution; y++)
             {
-                for (int x = 0; x < gridResolution; x++, i++)
+                for (int y = 0; y < gridResolution; y++)
                 {
-                    grid[i].localPosition = TransformPoint(x, y, z);
+                    for (int x = 0; x < gridResolution; x++, i++)
+                    {
+                        grid[i].localPosition = TransformPoint(x, y, z);
+                    }
+                }
+            }
+        }
+
+        void UpdateTransformation()
+        {
+            GetComponents<Transformation>(transformations);
+            if (transformations.Count > 0)
+            {
+                transformation = transformations[0].Matrix;
+                for (int i = 1; i < transformations.Count; i++)
+                {
+                    transformation = transformations[i].Matrix * transformation;
                 }
             }
         }
