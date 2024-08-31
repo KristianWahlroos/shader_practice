@@ -4,7 +4,7 @@ Shader "Custom/Tut1Shader" {
 	Properties {
 		_Tint ("Tint", Color) = (1, 1, 1, 1)
 	}
-	
+
 	SubShader {
 
 		Pass {
@@ -15,12 +15,14 @@ Shader "Custom/Tut1Shader" {
 
 			#include "UnityCG.cginc"
 
+			float4 _Tint;
+
 			float4 MyVertexProgram (float4 position : POSITION) : SV_POSITION {
 				return UnityObjectToClipPos(position);;
 			}
 
 			float4 MyFragmentProgram (float4 position: SV_POSITION) : SV_TARGET {
-				return float4(0.5, 0.3, 0.4,1);
+				return _Tint;
 			}
 
 			ENDCG
