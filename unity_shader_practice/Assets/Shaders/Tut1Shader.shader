@@ -3,6 +3,17 @@ Shader "Custom/Tut1Shader" {
 
 		Pass {
 
+			#pragma vertex MyVertexProgram
+			#pragma fragment MyFragmentProgram
+
+			void MyVertexProgram () {
+
+			}
+
+			void MyFragmentProgram () {
+
+			}
+
 		}
 	}
 }
