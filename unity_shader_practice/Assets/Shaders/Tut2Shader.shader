@@ -7,12 +7,14 @@ Shader "Custom/Tut1Shader" {
 			#pragma vertex MyVertexProgram
 			#pragma fragment MyFragmentProgram
 
-			void MyVertexProgram () {
+			#include "UnityCG.cginc"
 
+			float4 MyVertexProgram (float4 position : POSITION) : SV_POSITION {
+				return position;
 			}
 
-			void MyFragmentProgram () {
-
+			float4 MyFragmentProgram (float4 position: SV_POSITION) : SV_TARGET {
+				return 0;
 			}
 
 			ENDCG
