@@ -1,6 +1,10 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Custom/Tut1Shader" {
+	Properties {
+		_Tint ("Tint", Color) = (1, 1, 1, 1)
+	}
+	
 	SubShader {
 
 		Pass {
