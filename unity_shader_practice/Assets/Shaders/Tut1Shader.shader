@@ -2,6 +2,7 @@ Shader "Custom/Tut1Shader" {
 	SubShader {
 
 		Pass {
+			CGPROGRAM
 
 			#pragma vertex MyVertexProgram
 			#pragma fragment MyFragmentProgram
@@ -14,6 +15,7 @@ Shader "Custom/Tut1Shader" {
 
 			}
 
+			ENDCG
 		}
 	}
 }
