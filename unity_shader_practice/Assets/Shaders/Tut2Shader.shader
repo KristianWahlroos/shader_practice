@@ -17,12 +17,15 @@ Shader "Custom/Tut1Shader" {
 
 			float4 _Tint;
 
-			float4 MyVertexProgram (float4 position : POSITION) : SV_POSITION {
-				return UnityObjectToClipPos(position);;
+			float4 MyVertexProgram (float4 position : POSITION,
+				out float3 localPosition : TEXCOORD0) : SV_POSITION {
+				localPosition = position.xyz;
+				return UnityObjectToClipPos(position);
 			}
 
-			float4 MyFragmentProgram (float4 position: SV_POSITION) : SV_TARGET {
-				return _Tint;
+			float4 MyFragmentProgram (float4 position: SV_POSITION,
+				float3 localPosition: TEXCOORD0) : SV_TARGET {
+				return float4(localPosition + 0.5, 1) * _Tint;
 			}
 
 			ENDCG
