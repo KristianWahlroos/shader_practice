@@ -16,7 +16,7 @@ Shader "Custom/Tut1Shader" {
 			}
 
 			float4 MyFragmentProgram (float4 position: SV_POSITION) : SV_TARGET {
-				return 0;
+				return float4(0.5, 0.3, 0.4,1);
 			}
 
 			ENDCG
