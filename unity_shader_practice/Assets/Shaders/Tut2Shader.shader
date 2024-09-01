@@ -35,7 +35,7 @@ Shader "Custom/Tut1Shader" {
 			}
 
 			float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
-				return tex2D(_MainTex, i.uv);
+				return tex2D(_MainTex, i.uv) * _Tint;
 			}
 
 			ENDCG
