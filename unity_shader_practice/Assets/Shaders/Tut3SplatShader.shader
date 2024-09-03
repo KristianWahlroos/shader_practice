@@ -43,7 +43,7 @@ Shader "Custom/Tut3SplatShader" {
 				float4 splat = tex2D(_MainTex, i.uvSplat);
 				return
 					tex2D(_Texture1, i.uv) * splat.r +
-					tex2D(_Texture2, i.uv);
+					tex2D(_Texture2, i.uv) * (1 - splat.r);
 			}
 
 			ENDCG
