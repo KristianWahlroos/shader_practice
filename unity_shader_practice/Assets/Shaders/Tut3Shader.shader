@@ -40,7 +40,7 @@ Shader "Custom/Tut3Shader" {
 
 			float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
 				float4 color = tex2D(_MainTex, i.uv) * _Tint;
-				color *= tex2D(_DetailTex, i.uvDetail) * 2;
+				color *= tex2D(_DetailTex, i.uvDetail) * unity_ColorSpaceDouble;
 				return color;
 			}
 
