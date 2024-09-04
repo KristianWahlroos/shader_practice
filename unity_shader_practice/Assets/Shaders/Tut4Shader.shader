@@ -25,6 +25,7 @@ Shader "Custom/Tut4Shader" {
 				float4 position : SV_POSITION;
 				float2 uv : TEXCOORD0;
 				float3 normal : TEXCOORD1;
+				float3 worldPos : TEXCOORD2;
 			};
 
 			struct VertexData {
@@ -36,6 +37,7 @@ Shader "Custom/Tut4Shader" {
 			Interpolators MyVertexProgram (VertexData v) {
 				Interpolators i;
 				i.position = UnityObjectToClipPos(v.position);
+				i.worldPos = mul(unity_ObjectToWorld, v.position);
 				i.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				i.normal = UnityObjectToWorldNormal(v.normal);
 				return i;
@@ -44,10 +46,12 @@ Shader "Custom/Tut4Shader" {
 			float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
 				i.normal = normalize(i.normal);
 				float3 lightDir = _WorldSpaceLightPos0.xyz;
+				float3 viewDir = normalize(_WorldSpaceCameraPos - i.worldPos);
 				float3 lightColor = _LightColor0.rgb;
 				float3 albedo = tex2D(_MainTex, i.uv).rgb * _Tint.rgb;
 				float3 diffuse = albedo * lightColor * DotClamped(lightDir, i.normal);
-				return float4(diffuse, 1);
+				float3 reflectionDir = reflect(-lightDir, i.normal);
+				return DotClamped(viewDir, reflectionDir);
 			}
 
 			ENDCG
