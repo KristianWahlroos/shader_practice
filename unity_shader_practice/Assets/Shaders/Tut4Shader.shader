@@ -39,7 +39,7 @@ Shader "Custom/Tut4Shader" {
 			}
 
 			float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
-				i.normal = normalize(i.normal)
+				i.normal = normalize(i.normal);
 				return float4(i.normal * 0.5 + 0.5, 1);
 			}
 
