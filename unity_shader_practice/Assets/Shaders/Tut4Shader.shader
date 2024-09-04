@@ -53,8 +53,9 @@ Shader "Custom/Tut4Shader" {
 				float3 albedo = tex2D(_MainTex, i.uv).rgb * _Tint.rgb;
 				float3 diffuse = albedo * lightColor * DotClamped(lightDir, i.normal);
 				float3 reflectionDir = reflect(-lightDir, i.normal);
+				float3 halfVector = normalize(lightDir + viewDir);
 				return pow(
-					DotClamped(viewDir, reflectionDir),
+					DotClamped(halfVector, i.normal),
 					_Smoothness * 100
 				);
 			}
