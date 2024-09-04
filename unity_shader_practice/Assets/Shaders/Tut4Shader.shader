@@ -34,7 +34,8 @@ Shader "Custom/Tut4Shader" {
 				Interpolators i;
 				i.position = UnityObjectToClipPos(v.position);
 				i.uv = TRANSFORM_TEX(v.uv, _MainTex);
-				i.normal = v.normal;
+				i.normal = UnityObjectToWorldNormal(v.normal);
+				i.normal = normalize(i.normal);
 				return i;
 			}
 
