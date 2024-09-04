@@ -54,10 +54,11 @@ Shader "Custom/Tut4Shader" {
 				float3 diffuse = albedo * lightColor * DotClamped(lightDir, i.normal);
 				float3 reflectionDir = reflect(-lightDir, i.normal);
 				float3 halfVector = normalize(lightDir + viewDir);
-				return pow(
+				float3 specular = lightColor * pow(
 					DotClamped(halfVector, i.normal),
 					_Smoothness * 100
 				);
+				return float4(specular, 1);
 			}
 
 			ENDCG
