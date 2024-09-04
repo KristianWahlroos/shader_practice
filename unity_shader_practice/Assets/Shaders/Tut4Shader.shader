@@ -35,11 +35,11 @@ Shader "Custom/Tut4Shader" {
 				i.position = UnityObjectToClipPos(v.position);
 				i.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				i.normal = UnityObjectToWorldNormal(v.normal);
-				i.normal = normalize(i.normal);
 				return i;
 			}
 
 			float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
+				i.normal = normalize(i.normal)
 				return float4(i.normal * 0.5 + 0.5, 1);
 			}
 
