@@ -44,7 +44,9 @@ Shader "Custom/Tut4Shader" {
 			float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
 				i.normal = normalize(i.normal);
 				float3 lightDir = _WorldSpaceLightPos0.xyz;
-				return DotClamped(lightDir, i.normal);
+				float3 lightColor = _LightColor0.rgb;
+				float3 diffuse = lightColor * DotClamped(lightDir, i.normal);
+				return float4(diffuse, 1);
 			}
 
 			ENDCG
