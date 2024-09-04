@@ -7,6 +7,9 @@ Shader "Custom/Tut4Shader" {
 	SubShader {
 
 		Pass {
+			Tags {
+				"LightMode" = "ForwardBase"
+			}
 			CGPROGRAM
 
 			#pragma vertex MyVertexProgram
@@ -40,7 +43,8 @@ Shader "Custom/Tut4Shader" {
 
 			float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
 				i.normal = normalize(i.normal);
-				return DotClamped(float3(0, 1, 0), i.normal);
+				float3 lightDir = _WorldSpaceLightPos0.xyz;
+				return DotClamped(lightDir, i.normal);
 			}
 
 			ENDCG
