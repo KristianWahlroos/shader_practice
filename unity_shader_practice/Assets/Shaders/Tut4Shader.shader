@@ -60,7 +60,7 @@ Shader "Custom/Tut4Shader" {
 					DotClamped(halfVector, i.normal),
 					_Smoothness * 100
 				);
-				return float4(specular, 1);
+				return float4(diffuse + specular, 1);
 			}
 
 			ENDCG
