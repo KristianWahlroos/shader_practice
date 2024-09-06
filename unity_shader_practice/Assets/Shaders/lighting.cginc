@@ -58,5 +58,3 @@ float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
 		light, indirectLight
 	);
 }
-
-ENDCG
