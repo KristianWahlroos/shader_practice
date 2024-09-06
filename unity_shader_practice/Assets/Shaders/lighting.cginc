@@ -1,7 +1,5 @@
-#pragma target 3.0
-
-#pragma vertex MyVertexProgram
-#pragma fragment MyFragmentProgram
+#if !defined(MY_LIGHTING_INCLUDED)
+#define MY_LIGHTING_INCLUDED
 
 #include "UnityPBSLighting.cginc"
 
@@ -58,3 +56,5 @@ float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
 		light, indirectLight
 	);
 }
+
+#endif
