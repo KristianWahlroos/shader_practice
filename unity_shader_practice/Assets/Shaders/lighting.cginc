@@ -33,7 +33,7 @@ Interpolators MyVertexProgram (VertexData v) {
 
 UnityLight CreateLight (Interpolators i) {
 	UnityLight light;
-	light.dir = _WorldSpaceLightPos0.xyz;
+	light.dir = normalize(_WorldSpaceLightPos0.xyz - i.worldPos);
 	light.color = _LightColor0.rgb;
 	light.ndotl = DotClamped(i.normal, light.dir);
 	return light;
