@@ -41,8 +41,6 @@ Shader "Custom/Tut5Shader" {
 			#pragma vertex MyVertexProgram
 			#pragma fragment MyFragmentProgram
 
-			#define POINT
-
 			#include "lighting.cginc"
 
 			ENDCG
