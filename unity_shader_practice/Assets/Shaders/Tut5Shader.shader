@@ -18,6 +18,8 @@ Shader "Custom/Tut5Shader" {
 
 			#pragma target 3.0
 
+			#pragma multi_compile _ VERTEXLIGHT_ON
+
 			#pragma vertex MyVertexProgram
 			#pragma fragment MyFragmentProgram
 
@@ -38,7 +40,7 @@ Shader "Custom/Tut5Shader" {
 
 			#pragma target 3.0
 
-			#pragma multi_compile DIRECTIONAL DIRECTIONAL_COOKIE POINT POINT_COOKIE SPOT
+			#pragma multi_compile_fwdadd
 
 			#pragma vertex MyVertexProgram
 			#pragma fragment MyFragmentProgram

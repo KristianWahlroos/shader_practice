@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &218104856
 Light:
   m_ObjectHideFlags: 0
@@ -330,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &740955042
 Light:
   m_ObjectHideFlags: 0
@@ -984,7 +984,7 @@ Light:
   m_Cookie: {fileID: 8900000, guid: 5f3932aeb3c1de047ba872582565b006, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
