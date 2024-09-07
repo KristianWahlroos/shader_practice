@@ -38,7 +38,7 @@ Shader "Custom/Tut5Shader" {
 
 			#pragma target 3.0
 
-			#pragma multi_compile DIRECTIONAL DIRECTIONAL_COOKIE POINT SPOT
+			#pragma multi_compile DIRECTIONAL DIRECTIONAL_COOKIE POINT POINT_COOKIE SPOT
 
 			#pragma vertex MyVertexProgram
 			#pragma fragment MyFragmentProgram
