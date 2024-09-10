@@ -23,6 +23,8 @@ Shader "Custom/Tut5Shader" {
 			#pragma vertex MyVertexProgram
 			#pragma fragment MyFragmentProgram
 
+			#define FORWARD_BASE_PASS
+
 			#include "lighting.cginc"
 
 			ENDCG
