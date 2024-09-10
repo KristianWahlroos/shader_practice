@@ -76,11 +76,16 @@ UnityIndirect CreateIndirectLight (Interpolators i) {
 	return indirectLight;
 }
 
-float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
+void InitializeFragmentNormal(inout Interpolators i) {
+	float h = tex2D(_HeightMap, i.uv);
+	i.normal = float3(0, h, 0);
 	i.normal = normalize(i.normal);
+}
+
+float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
+	InitializeFragmentNormal(i);
 	float3 viewDir = normalize(_WorldSpaceCameraPos - i.worldPos);
 	float3 albedo = tex2D(_MainTex, i.uv).rgb * _Tint.rgb;
-	albedo *= tex2D(_HeightMap, i.uv);
 	
 	float3 specularTint;
 	float oneMinusReflectivity;
