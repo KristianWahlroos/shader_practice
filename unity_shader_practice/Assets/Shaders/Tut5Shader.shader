@@ -25,7 +25,7 @@ Shader "Custom/Tut5Shader" {
 
 			#define FORWARD_BASE_PASS
 
-			#include "lighting.cginc"
+			#include "lighting5.cginc"
 
 			ENDCG
 		}
@@ -47,7 +47,7 @@ Shader "Custom/Tut5Shader" {
 			#pragma vertex MyVertexProgram
 			#pragma fragment MyFragmentProgram
 
-			#include "lighting.cginc"
+			#include "lighting5.cginc"
 
 			ENDCG
 		}
