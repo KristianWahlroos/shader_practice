@@ -76,8 +76,9 @@ UnityIndirect CreateIndirectLight (Interpolators i) {
 	return indirectLight;
 }
 
-void InitializeFragmentNormal(inout Interpolators i) {
-	i.normal = tex2D(_NormalMap, i.uv).xyz * 2 - 1;
+void InitializeFragmentNormal(inout Interpolators i) {	
+	i.normal.xy = tex2D(_NormalMap, i.uv).wy * 2 - 1;
+	i.normal.z = sqrt(1 - saturate(dot(i.normal.xy, i.normal.xy)));
 	i.normal = i.normal.xzy;
 }
 
