@@ -7,6 +7,7 @@ Shader "Custom/Tut6Shader" {
 		_BumpScale ("Bump Scale", Float) = 1
 		[Gamma] _Metallic ("Metallic", Range(0, 1)) = 0
 		_Smoothness ("Smoothness", Range(0, 1)) = 0.5
+		_DetailTex ("Detail Texture", 2D) = "gray" {}
 	}
 
 		SubShader {
