@@ -10,8 +10,8 @@ float4 _MainTex_ST, _DetailTex_ST;
 float _Metallic;
 float _Smoothness;
 
-sampler2D _NormalMap;
-float _BumpScale;
+sampler2D _NormalMap, _DetailNormalMap;
+float _BumpScale, _DetailBumpScale;
 
 struct Interpolators {
 	float4 position : SV_POSITION;
@@ -80,6 +80,8 @@ UnityIndirect CreateIndirectLight (Interpolators i) {
 
 void InitializeFragmentNormal(inout Interpolators i) {	
 	i.normal = UnpackScaleNormal(tex2D(_NormalMap, i.uv.xy), _BumpScale);
+	i.normal =
+		UnpackScaleNormal(tex2D(_DetailNormalMap, i.uv.zw), _DetailBumpScale);
 	i.normal = i.normal.xzy;
 	i.normal = normalize(i.normal);
 }
