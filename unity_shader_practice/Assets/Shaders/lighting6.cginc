@@ -79,11 +79,12 @@ UnityIndirect CreateIndirectLight (Interpolators i) {
 }
 
 void InitializeFragmentNormal(inout Interpolators i) {	
-	i.normal = UnpackScaleNormal(tex2D(_NormalMap, i.uv.xy), _BumpScale);
-	i.normal =
+	float3 mainNormal =
+		UnpackScaleNormal(tex2D(_NormalMap, i.uv.xy), _BumpScale);
+	float3 detailNormal =
 		UnpackScaleNormal(tex2D(_DetailNormalMap, i.uv.zw), _DetailBumpScale);
+	i.normal = BlendNormals(mainNormal, detailNormal);
 	i.normal = i.normal.xzy;
-	i.normal = normalize(i.normal);
 }
 
 float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
