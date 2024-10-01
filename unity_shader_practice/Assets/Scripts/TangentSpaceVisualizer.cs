@@ -23,19 +23,23 @@ public class TangentSpaceVisualizer : MonoBehaviour
     {
         Vector3[] vertices = mesh.vertices;
         Vector3[] normals = mesh.normals;
+        Vector4[] tangents = mesh.tangents;
         for (int i = 0; i < vertices.Length; i++)
         {
             ShowTangentSpace(
                 transform.TransformPoint(vertices[i]),
-                transform.TransformDirection(normals[i])
+                transform.TransformDirection(normals[i]),
+                transform.TransformDirection(tangents[i])
             );
         }
     }
 
-    void ShowTangentSpace(Vector3 vertex, Vector3 normal)
+    void ShowTangentSpace(Vector3 vertex, Vector3 normal, Vector3 tangent)
     {
         vertex += normal * offset;
         Gizmos.color = Color.green;
         Gizmos.DrawLine(vertex, vertex + normal * scale);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(vertex, vertex + tangent * scale);
     }
 }
