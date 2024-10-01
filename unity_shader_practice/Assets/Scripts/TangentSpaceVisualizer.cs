@@ -29,17 +29,21 @@ public class TangentSpaceVisualizer : MonoBehaviour
             ShowTangentSpace(
                 transform.TransformPoint(vertices[i]),
                 transform.TransformDirection(normals[i]),
-                transform.TransformDirection(tangents[i])
+                transform.TransformDirection(tangents[i]),
+                tangents[i].w
             );
         }
     }
 
-    void ShowTangentSpace(Vector3 vertex, Vector3 normal, Vector3 tangent)
+    void ShowTangentSpace(Vector3 vertex, Vector3 normal, Vector3 tangent, float binormalSign)
     {
         vertex += normal * offset;
         Gizmos.color = Color.green;
         Gizmos.DrawLine(vertex, vertex + normal * scale);
         Gizmos.color = Color.red;
         Gizmos.DrawLine(vertex, vertex + tangent * scale);
+        Vector3 binormal = Vector3.Cross(normal, tangent) * binormalSign;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(vertex, vertex + binormal * scale);
     }
 }
